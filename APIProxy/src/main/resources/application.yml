@@ -1,0 +1,11 @@
+server:
+  port: 5000
+zuul:
+  routes:
+    BubblesService:                        ## 认证服务
+      path: /demo/**                    ## 匹配路径
+      service-id: ClientDemo
+
+spring:
+  application:
+    name: APIPorxy

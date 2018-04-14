@@ -1,0 +1,25 @@
+logging:
+  config: classpath:logback.xml
+
+spring:
+  profiles:
+    active: prod
+server:
+  address: 0.0.0.0
+  port: 0
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.int[10000,19999]}
+    lease-expiration-duration-in-seconds: 5
+    lease-renewal-interval-in-seconds: 10
+
+  client:
+    service-url:
+      defaultZone: http://${eureka.server.host}:${eureka.server.port}/eureka/
+    registry-fetch-interval-seconds: 5
+  server:
+    host: eureka-server
+    port: 8765
+    
+      
