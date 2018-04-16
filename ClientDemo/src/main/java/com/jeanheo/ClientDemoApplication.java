@@ -10,6 +10,7 @@ import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 /**
@@ -25,27 +26,27 @@ public class ClientDemoApplication {
         SpringApplication.run(ClientDemoApplication.class, args);
     }
 
-    public static String getLocalIp() throws SocketException {
-        String ipString = "";
+    public static ArrayList<String> getLocalIp() throws SocketException {
         Enumeration<NetworkInterface> allNetInterfaces = NetworkInterface.getNetworkInterfaces();
         InetAddress ip;
+        ArrayList<String> ips = new ArrayList<>();
         while (allNetInterfaces.hasMoreElements()) {
             NetworkInterface netInterface = allNetInterfaces.nextElement();
             Enumeration<InetAddress> addresses = netInterface.getInetAddresses();
             while (addresses.hasMoreElements()) {
                 ip = addresses.nextElement();
                 if (ip instanceof Inet4Address && !"127.0.0.1".equals(ip.getHostAddress())) {
-                    return ip.getHostAddress();
+                    ips.add(ip.getHostAddress());
                 }
             }
         }
-        return ipString;
+        return ips;
     }
 
 
     @RequestMapping(value = "/")
     public String root() throws SocketException {
-        return String.format("Hello! My local ip is %s", getLocalIp());
+        return String.format("Hello! My ip list = %s", getLocalIp());
     }
 
 }
