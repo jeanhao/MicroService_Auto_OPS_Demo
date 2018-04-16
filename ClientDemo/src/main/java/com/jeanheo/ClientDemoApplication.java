@@ -45,7 +45,7 @@ public class ClientDemoApplication {
 
     @RequestMapping(value = "/")
     public String root() throws SocketException {
-        return String.format("Hello! My local-ip is %s", getLocalIp());
+        return String.format("Hello! My local ip is %s", getLocalIp());
     }
 
 }
