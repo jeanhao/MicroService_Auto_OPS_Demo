@@ -4,7 +4,7 @@ zuul:
   routes:
     BubblesService:                        ## 认证服务
       path: /demo/**                    ## 匹配路径
-      service-id: ClientDemo
+      service-id: LoadBalanceDemo
 
 spring:
   application:

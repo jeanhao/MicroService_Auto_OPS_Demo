@@ -63,13 +63,13 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
         </dependency>
-
     </dependencies>
     <modules>
         <module>EurekaServer</module>
         <module>ClientDemo</module>
         <module>BasicConfig</module>
         <module>APIProxy</module>
+        <module>LoadBalanceDemo</module>
     </modules>
 
 
